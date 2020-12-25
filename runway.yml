@@ -35,7 +35,7 @@ build steps:
     rm -f checkpoints.zip &&\
     cd ../
 
-  RUN pip3 install numpy
+  RUN pip3 install numpy runway-python
 
   RUN pip3 install dlib
 
