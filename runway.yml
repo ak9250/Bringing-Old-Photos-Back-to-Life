@@ -5,27 +5,25 @@ spec:
   gpu: True
   cpu: False
 build steps:
-  - FROM nvidia/cuda:11.1-base-ubuntu20.04
+  - apt update && DEBIAN_FRONTEND=noninteractive apt install git bzip2 wget unzip python3-pip python3-dev cmake libgl1-mesa-dev python-is-python3 libgtk2.0-dev -yq
+  - pip3 install numpy runway-python
 
-  - RUN apt update && DEBIAN_FRONTEND=noninteractive apt install git bzip2 wget unzip python3-pip python3-dev cmake libgl1-mesa-dev python-is-python3 libgtk2.0-dev -yq
-  - ADD . /app
-  - WORKDIR /app
-  - RUN cd Face_Enhancement/models/networks/ &&\
+  - cd Face_Enhancement/models/networks/ &&\
     git clone https://github.com/vacancy/Synchronized-BatchNorm-PyTorch &&\
     cp -rf Synchronized-BatchNorm-PyTorch/sync_batchnorm . &&\
     cd ../../../
 
-  - RUN cd Global/detection_models &&\
+  - cd Global/detection_models &&\
     git clone https://github.com/vacancy/Synchronized-BatchNorm-PyTorch &&\
     cp -rf Synchronized-BatchNorm-PyTorch/sync_batchnorm . &&\
     cd ../../
 
-  - RUN cd Face_Detection/ &&\
+  - cd Face_Detection/ &&\
     wget http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2 &&\
     bzip2 -d shape_predictor_68_face_landmarks.dat.bz2 &&\
     cd ../ 
 
-  - RUN cd Face_Enhancement/ &&\
+  - cd Face_Enhancement/ &&\
     wget https://facevc.blob.core.windows.net/zhanbo/old_photo/pretrain/Face_Enhancement/checkpoints.zip &&\
     unzip checkpoints.zip &&\
     cd ../ &&\
@@ -35,16 +33,13 @@ build steps:
     rm -f checkpoints.zip &&\
     cd ../
 
-  - RUN pip3 install numpy runway-python
 
-  - RUN pip3 install dlib
+  - pip3 install dlib
 
-  - RUN pip3 install -r requirements.txt
+  - pip3 install -r requirements.txt
 
-  - RUN git clone https://github.com/NVlabs/SPADE.git
+  - git clone https://github.com/NVlabs/SPADE.git
 
-  - RUN cd SPADE/ && pip3 install -r requirements.txt
+  - cd SPADE/ && pip3 install -r requirements.txt
 
-  - RUN cd ..
-
-  - CMD ["python3", "run.py"]
+  - cd ..
