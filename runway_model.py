@@ -2,11 +2,12 @@ import runway
 import numpy as np
 import argparse
 import torch
+from run import restore
 
-
-@runway.command('translate', inputs={'source_imgs': runway.image(description='input image to be translated'),'amount': runway.number(min=0, max=100, default=0,description='Age'), 'gender': runway.boolean(default=True,description='On uses male model, off uses female model'),}, outputs={'image': runway.image(description='input image to be translated')})
+@runway.command('translate', inputs={'source_imgs': runway.image(description='input image to be translated'),}, outputs={'image': runway.image(description='input image to be translated')})
 def translate(model, inputs):
-    return blah
+    image = restore(inputs['source_imgs'], True)
+    return image
 
 
 if __name__ == '__main__':
