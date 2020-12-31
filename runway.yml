@@ -8,8 +8,11 @@ build_steps:
   - apt-get update
   - apt-get install -y git bzip2 wget unzip cmake libgl1-mesa-dev libgtk2.0-dev
   - apt-get install ffmpeg libsm6 libxext6  -y
+  - pwd
+  - cd Bringing-Old-Photos-Back-to-Life
   - mv Bringing-Old-Photos-Back-to-Life photo_restoration
   - pwd
+  - cd ..
   # pull the syncBN repo
   - cd photo_restoration/Face_Enhancement/models/networks
   - pwd
