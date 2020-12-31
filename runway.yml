@@ -9,18 +9,14 @@ build_steps:
   - apt-get install -y git bzip2 wget unzip cmake libgl1-mesa-dev libgtk2.0-dev
   - apt-get install ffmpeg libsm6 libxext6  -y
   - pwd
-  - cd Bringing-Old-Photos-Back-to-Life
-  - mv Bringing-Old-Photos-Back-to-Life photo_restoration
-  - pwd
-  - cd ..
   # pull the syncBN repo
-  - cd photo_restoration/Face_Enhancement/models/networks
+  - cd Face_Enhancement/models/networks/
   - pwd
   - git clone https://github.com/vacancy/Synchronized-BatchNorm-PyTorch
   - cp -rf Synchronized-BatchNorm-PyTorch/sync_batchnorm .
   - cd ../../../
 
-  - cd Global/detection_models
+  - cd Global/detection_models/
   - pwd
   - git clone https://github.com/vacancy/Synchronized-BatchNorm-PyTorch
   - cp -rf Synchronized-BatchNorm-PyTorch/sync_batchnorm .
