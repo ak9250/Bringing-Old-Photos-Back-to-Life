@@ -27,7 +27,7 @@ def restore(img, remove_scratch):
     run_cmd("mkdir " + INPUT_DIR)
     run_cmd("mkdir " + OUTPUT_DIR)
     img.save(INPUT_DIR + "1.jpg", "JPEG")
-    opts = SimpleNamespace(input_folder=INPUT_DIR, output_folder=OUTPUT_DIR, checkpoint_name="Setting_9_epoch_100", GPU="-1", with_scratch=remove_scratch)
+    opts = SimpleNamespace(input_folder=INPUT_DIR, output_folder=OUTPUT_DIR, checkpoint_name="Setting_9_epoch_100", GPU="0", with_scratch=remove_scratch)
 
     gpu1 = opts.GPU
     # resolve relative paths before changing directory
@@ -44,7 +44,7 @@ def restore(img, remove_scratch):
 
     if not opts.with_scratch:
         stage_1_command = (
-            "sudo python3 test.py --test_mode Full --Quality_restore --test_input "
+            "python test.py --test_mode Full --Quality_restore --test_input "
             + stage_1_input_dir
             + " --outputs_dir "
             + stage_1_output_dir
@@ -61,7 +61,7 @@ def restore(img, remove_scratch):
         os.makedirs(new_input)
         os.makedirs(new_mask)
         stage_1_command_1 = (
-            "sudo python3 detection.py --test_path "
+            "python detection.py --test_path "
             + stage_1_input_dir
             + " --output_dir "
             + mask_dir
@@ -70,7 +70,7 @@ def restore(img, remove_scratch):
             + gpu1
         )
         stage_1_command_2 = (
-            "sudo python3 test.py --Scratch_and_Quality_restore --test_input "
+            "python test.py --Scratch_and_Quality_restore --test_input "
             + new_input
             + " --test_mask "
             + new_mask
@@ -104,7 +104,7 @@ def restore(img, remove_scratch):
     if not os.path.exists(stage_2_output_dir):
         os.makedirs(stage_2_output_dir)
     stage_2_command = (
-        "sudo python3 detect_all_dlib.py --url " + stage_2_input_dir + " --save_url " + stage_2_output_dir
+        "python detect_all_dlib.py --url " + stage_2_input_dir + " --save_url " + stage_2_output_dir
     )
     run_cmd(stage_2_command)
     print("Finish Stage 2 ...")
@@ -119,7 +119,7 @@ def restore(img, remove_scratch):
     if not os.path.exists(stage_3_output_dir):
         os.makedirs(stage_3_output_dir)
     stage_3_command = (
-        "sudo python3 test_face.py --old_face_folder "
+        "python test_face.py --old_face_folder "
         + stage_3_input_face
         + " --old_face_label_folder "
         + stage_3_input_mask
@@ -144,7 +144,7 @@ def restore(img, remove_scratch):
     if not os.path.exists(stage_4_output_dir):
         os.makedirs(stage_4_output_dir)
     stage_4_command = (
-        "sudo python3 align_warp_back_multiple_dlib.py --origin_url "
+        "python align_warp_back_multiple_dlib.py --origin_url "
         + stage_4_input_image_dir
         + " --replace_url "
         + stage_4_input_face_dir
