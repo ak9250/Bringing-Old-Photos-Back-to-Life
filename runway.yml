@@ -12,7 +12,7 @@ build_steps:
   - pwd
   - ls
   # pull the syncBN repo
-  - cd Face_Enhancement/models/networks/
+  - cd Face_Enhancement/
   - pwd
   - git clone https://github.com/vacancy/Synchronized-BatchNorm-PyTorch
   - cp -rf Synchronized-BatchNorm-PyTorch/sync_batchnorm .
