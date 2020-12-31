@@ -9,10 +9,10 @@ build_steps:
   - apt-get install -y git bzip2 wget unzip cmake libgl1-mesa-dev libgtk2.0-dev
   - apt-get install ffmpeg libsm6 libxext6  -y
   - pwd
+  - ls
   # pull the syncBN repo
-  - cd Face_Enhancement/models/
+  - cd Face_Enhancement/models/networks/
   - pwd
-  - cd networks/
   - git clone https://github.com/vacancy/Synchronized-BatchNorm-PyTorch
   - cp -rf Synchronized-BatchNorm-PyTorch/sync_batchnorm .
   - cd ../../../
