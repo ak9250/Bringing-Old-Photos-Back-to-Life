@@ -1,6 +1,6 @@
 # Copyright (c) Microsoft Corporation.
 # Licensed under the MIT License.
-
+# adapted from https://github.com/aliabid94/Bringing-Old-Photos-Back-to-Life/blob/master/run.py
 import os
 import argparse
 import shutil
@@ -157,4 +157,3 @@ def restore(img, remove_scratch):
 
     FINAL_OUTPUT = os.path.join(OUTPUT_DIR, "final_output", "1.png")
     return FINAL_OUTPUT
-
