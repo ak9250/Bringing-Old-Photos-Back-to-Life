@@ -15,7 +15,7 @@ build_steps:
   - cd ../../../
 
   - cd Global/detection_models
-  - git clone https://github.com/vacancy/Synchronized-BatchNorm-PyTorch
+  # - git clone https://github.com/vacancy/Synchronized-BatchNorm-PyTorch
   - cp -rf Synchronized-BatchNorm-PyTorch/sync_batchnorm .
   - cd ../../
 
