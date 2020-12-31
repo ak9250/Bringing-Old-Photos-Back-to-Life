@@ -10,11 +10,13 @@ build_steps:
   - apt-get install ffmpeg libsm6 libxext6  -y
   # pull the syncBN repo
   - cd Face_Enhancement/models/networks
+  - pwd
   - git clone https://github.com/vacancy/Synchronized-BatchNorm-PyTorch
   - cp -rf Synchronized-BatchNorm-PyTorch/sync_batchnorm .
   - cd ../../../
 
   - cd Global/detection_models
+  - pwd
   # - git clone https://github.com/vacancy/Synchronized-BatchNorm-PyTorch
   - cp -rf Synchronized-BatchNorm-PyTorch/sync_batchnorm .
   - cd ../../
