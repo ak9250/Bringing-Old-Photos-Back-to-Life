@@ -28,12 +28,12 @@ build_steps:
 # download the pretrained model
   - cd Face_Enhancement/
   - wget https://facevc.blob.core.windows.net/zhanbo/old_photo/pretrain/Face_Enhancement/checkpoints.zip
-  - unzip checkpoints.zip
+  - unzip checkpoints.zip -y
   - cd ../
 
   - cd Global/
   - wget https://facevc.blob.core.windows.net/zhanbo/old_photo/pretrain/Global/checkpoints.zip
-  - unzip checkpoints.zip
+  - unzip checkpoints.zip -y
   - cd ../
 
   - pip install -r requirements.txt
