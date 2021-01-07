@@ -1,7 +1,4 @@
 import runway
-import numpy as np
-import argparse
-import torch
 from run import restore
 from PIL import Image
 
